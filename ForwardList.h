@@ -1,5 +1,5 @@
 #ifdef FORWARDLIST_H
-#define FORWARDLIST
+#define FORWARDLIST_H
 #include "Node.h"
 
 template<typename T>
