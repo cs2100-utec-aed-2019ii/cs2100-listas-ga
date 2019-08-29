@@ -1,16 +1,37 @@
-#include "Forwardlist.h"
+#include "ForwardList.h"
+
 
 T& front(void){};
 
-T& back(void){};
+template <typename T>
+T& ForwardList<T>::back(void){
+	Node<T> node = this->*head;
+	while(node.next != nullptr){
+		*node = node.next;
+	}
+	return node;
+};
 
-
-
-void push_back(const T& element){};
+template <typename T>
+void ForwardList<T>::push_back(const T& element){
+	Node<T> node = this->*head;
+	while(node.next != nullptr){
+		*node = node.next;
+	}
+	node.next = *element;
+	element.next = nullptr;
+};
 
 void push_front(const T& element){};
 
-Node<T>* pop_back(void){};
+template <typename T>
+Node<T>* ForwardList<T>::pop_back(void){
+	Node<T> node = this->*head;
+	while((node.next).next != nullptr){
+		*node = node.next;
+	}
+	node.next = nullptr;
+};
 
 Node<T>* pop_front(void){};
 
