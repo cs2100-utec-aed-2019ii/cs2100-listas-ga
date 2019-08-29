@@ -49,7 +49,11 @@ class ForwardList: public Node<T> {
 
         ForwardList& reverse(void);
 
+<<<<<<< HEAD
         std::ostream& operator<< (std::ostream& out, const ForwardList& list){};
+=======
+//        std::ostream& operator<< (const ForwardList&, std::ostream&);
+>>>>>>> feature/BackFunctions
 
 };
 
