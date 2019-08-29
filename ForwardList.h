@@ -35,7 +35,13 @@ class ForwardList: public Node<T> {
 
         Node<T>* pop_front(void);
 
-        T& operator[] (const int& index){};
+        T& operator[] (const int& index){
+            Node<T> *temp = head;
+            for(unisgned int i = 0; i < index; i++){
+                temp = temp->next;
+            }
+            return temp->value;
+        };
 
 
 
@@ -49,7 +55,14 @@ class ForwardList: public Node<T> {
 
         ForwardList& reverse(void);
 
-        std::ostream& operator<< (std::ostream& out, const ForwardList& list){};
+        std::ostream& operator<< (std::ostream& out, const ForwardList& list){
+            Node<T> *temp = head;
+            while(temp){
+                out<< temp->value;
+                temp = temp->next;
+            }
+            return out;
+        };
 
 };
 
