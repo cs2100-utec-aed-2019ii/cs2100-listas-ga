@@ -35,7 +35,7 @@ class ForwardList: public Node<T> {
 
         Node<T>* pop_front(void);
 
-        T& operator[] (const int&);
+        T& operator[] (const int& index){};
 
 
 
@@ -49,7 +49,7 @@ class ForwardList: public Node<T> {
 
         ForwardList& reverse(void);
 
-        //std::ostream& operator<< (const ForwardList& list, std::ostream& out);
+        std::ostream& operator<< (std::ostream& out, const ForwardList& list){};
 
 };
 

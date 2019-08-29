@@ -33,33 +33,6 @@ Node<T>* ForwardList<T>::pop_front(void){
 T& operator[] (const int&){};
 
 
-template <typename T>
-bool ForwardList<T>::empty(void){
-  return head;
-};
-
-
-template <typename T>
-unsigned int ForwardList<T>::size(void){
-  Node<T>* temp = head;
-  unsigned int size = 0;
-
-  while(temp){
-    size++;
-    temp = temp->next;
-  }
-  return size;
-};
-
-template <typename T>
-void ForwardList<T>::clear(void){
-  Node<T>* temp = head;
-  while(temp){
-    temp = temp->next;
-    delete head;
-    head = temp;
-  }
-};
 
 template <typename T>
 ForwardList& ForwardList<T>::sort(void){};
