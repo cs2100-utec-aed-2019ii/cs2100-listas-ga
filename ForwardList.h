@@ -1,10 +1,11 @@
 #ifndef FORWARDLIST_H
 #define FORWARDLIST_H
 #include "Node.h"
+#include <iostream>
 
 template <typename T>
 
-class ForwardList {
+class ForwardList: public Node<T> {
 
     protected:
 
@@ -48,8 +49,10 @@ class ForwardList {
 
         ForwardList& reverse(void);
 
-        std::ostream& operator<< (const ForwardList&, std::ostream&);
+        //std::ostream& operator<< (const ForwardList& list, std::ostream& out);
 
 };
+
+
 
 #endif

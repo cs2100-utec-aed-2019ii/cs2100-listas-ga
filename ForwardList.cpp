@@ -1,6 +1,9 @@
-#include "Forwardlist.h"
+#include "ForwardList.h"
 
-T& front(void){};
+template <typename T>
+T& ForwardList<T>::front(void){
+  return head;
+};
 
 T& back(void){};
 
@@ -8,11 +11,24 @@ T& back(void){};
 
 void push_back(const T& element){};
 
-void push_front(const T& element){};
+template <typename T>
+void ForwardList<T>::push_front(const T& element){
+
+  Node<T> *temp = new Node<T>(*element);
+  temp->next = head;
+  head = temp;
+
+};
 
 Node<T>* pop_back(void){};
 
-Node<T>* pop_front(void){};
+template <typename T>
+Node<T>* ForwardList<T>::pop_front(void){
+  Node<T>* temp = head;
+  head = head->next;
+  return temp;
+
+};
 
 T& operator[] (const int&){};
 
@@ -24,8 +40,7 @@ unsigned int size(void){};
 
 void clear(void){};
 
-ForwardList& sort(void){};
+template <typename T>
+ForwardList& ForwardList<T>::sort(void){};
 
 ForwardList& reverse(void){};
-
-std::ostream& operator<< (const ForwardList&, std::ostream&){};

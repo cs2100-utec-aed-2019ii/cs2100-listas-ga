@@ -12,7 +12,7 @@ class Node {
 
     public:
 
-        Node(void){
+        Node(T _value){
 
         }
 
