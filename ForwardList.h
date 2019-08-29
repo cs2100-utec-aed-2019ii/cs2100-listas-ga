@@ -48,7 +48,7 @@ class ForwardList {
 
         ForwardList& reverse(void);
 
-        std::ostream& operator<< (const ForwardList&, std::ostream&);
+//        std::ostream& operator<< (const ForwardList&, std::ostream&);
 
 };
 
