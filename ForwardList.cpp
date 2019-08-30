@@ -48,8 +48,6 @@ Node<T>* ForwardList<T>::pop_front(void){
 
 };
 
-T& operator[] (const int&){};
-
 template <typename T>
 ForwardList& ForwardList<T>::sort(void){};
 
