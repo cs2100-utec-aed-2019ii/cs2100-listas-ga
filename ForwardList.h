@@ -61,14 +61,29 @@ class ForwardList : public List<T>{
 
         void erase(ForwardListNode<T>* del){
             ForwardListNode<T>* temp = head;
-            while(temp.next != del){
-                temp = temp.next;
+            while(temp->next != del){
+                temp = temp->next;
             }
-            temp.next = temp.next.next;
+            temp->next = (temp->next)->next;
         }
 
-        void insert(ForwardListNode<T>*, const T&){ // Inserta un elemento en la lista en base a un puntero
+        void insert(ForwardListNode<T>* _node, const T& val){ // Inserta un elemento en la lista en base a un puntero
+            ForwardListNode<T>* temp = head;
+            ForwardListNode<T>* newNode = new ForwardListNode<T>(val);
+            if(_node == head){
+                newNode->next = _node;
+                head = newNode;
+            }
+            else{
+                while(temp->next != _node){
+                    temp = temp->next;
+                }
 
+                newNode->next = temp->next;
+
+                temp->next = newNode;
+
+            }
         }
 
         void drop(const T&){ // Elimina todos los elementos de la lista que tienen el valor igual al parametro

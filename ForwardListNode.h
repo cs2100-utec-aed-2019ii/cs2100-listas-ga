@@ -7,13 +7,15 @@ class ForwardListNode : public Node<T> {
 
     protected:
 
-        Node<T> * next;
+        ForwardListNode<T> * next;
+
     public:
-        ForwardListNode(void){
-        }
+        ForwardListNode(T _value){
+            this->value = _value;
+        };
         
         ~ForwardListNode(void){
-        }
+        };
 
 };
 

@@ -11,7 +11,7 @@ class Node {
     public:
 
         Node(T _value){
-
+            value = _value;
         }
 
         ~Node(void){
