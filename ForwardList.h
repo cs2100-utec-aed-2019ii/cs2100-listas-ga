@@ -1,62 +1,43 @@
 #ifndef FORWARDLIST_H
 #define FORWARDLIST_H
-#include "Node.h"
 #include <iostream>
+#include "ForwardListNode.h"
 
 template <typename T>
-
-class ForwardList: public Node<T> {
+class ForwardList : public List<T>{
 
     protected:
 
-        Node<T> *head;
+        ForwardListNode<T> *head;
+
+        ForwardListNode<T> *tail;
 
     public:
 
-        ForwardList(void){
+        unsigned int size(void){
+            ForwardListNode<T>* temp = head;
+            unsigned int size = 0;
 
-        }
-
-        ~ForwardList(void){
-
-        }
-
-        T& front(void);
-
-        T& back(void);
-
-
-
-        void push_back(const T& element);
-
-        void push_front(const T& element);
-
-        Node<T>* pop_back(void);
-
-        Node<T>* pop_front(void);
-
-        T& operator[] (const int& index){
-            Node<T> *temp = head;
-            for(unisgned int i = 0; i < index; i++){
+            while(temp){
+                size++;
                 temp = temp->next;
             }
-            return temp->value;
+            return size;
         };
 
+        void push_back(const T& element){
+            ForwardListNode<T> node = this->*head;
+            while(node.next != nullptr){
+                *node = node.next;
+            }
+            node.next = *element;
+            element.next = nullptr;
+        }
 
 
-        bool empty(void);
 
-        unsigned int size(void);
-
-        void clear(void);
-
-        ForwardList& sort(void);
-
-        ForwardList& reverse(void);
-
-       std::ostream& operator<< (std::ostream& out, const ForwardList& list){
-            Node<T> *temp = head;
+        std::ostream& operator<< (std::ostream& out){
+            ForwardListNode<T> *temp = head;
             while(temp){
                 out<< temp->value;
                 temp = temp->next;
@@ -65,7 +46,6 @@ class ForwardList: public Node<T> {
         };
 
 };
-
 
 
 #endif

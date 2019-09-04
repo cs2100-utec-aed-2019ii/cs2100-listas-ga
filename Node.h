@@ -8,8 +8,6 @@ class Node {
 
         T value;
 
-        Node<T> * next;
-
     public:
 
         Node(T _value){
