@@ -90,7 +90,20 @@ class ForwardList : public List<T>{
 
         }
 
-        List<T>& sort(void){
+        void sort(void){
+            ForwardListNode<T>* temp = head;
+            T tempVal;
+            unsigned int _size = this->size();
+            for(unsigned int i = 0; i < _size - 1; i++){
+                for(unsigned int j = 0; j < _size - 1 - i; j++){
+                    if(temp->value > (temp->next)->value){
+                        tempVal = temp->value;
+                        temp->value = (temp->next)->value;
+                        (temp->next)->value = tempVal;
+                    }
+                    temp = temp->next;
+                }
+            }
 
         }
 
