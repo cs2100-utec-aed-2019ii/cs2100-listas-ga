@@ -2,6 +2,7 @@
 #define FORWARDLIST_H
 #include <iostream>
 #include "ForwardListNode.h"
+#include "List.h"
 
 template <typename T>
 class ForwardList : public List<T>{
@@ -13,6 +14,22 @@ class ForwardList : public List<T>{
         ForwardListNode<T> *tail;
 
     public:
+
+        ForwardList():head{nullptr},tail{nullptr}{};
+
+        ~ForwardList(){
+            this->clear();
+        }
+
+        T& back(void){
+            ForwardListNode<T> node = this->*head;
+            while(node.next){
+                *node = node.next;
+	        }
+	        return node;
+        };
+
+
 
         unsigned int size(void){
             ForwardListNode<T>* temp = head;
@@ -42,11 +59,15 @@ class ForwardList : public List<T>{
             node.next = nullptr;
         }
 
-        void erase(Node<T>*){ // Elimina un elemento de la lista en base a un puntero
-
+        void erase(ForwardListNode<T>* del){
+            ForwardListNode<T>* temp = head;
+            while(temp.next != del){
+                temp = temp.next;
+            }
+            temp.next = temp.next.next;
         }
 
-        void insert(Node<T>*, const T&){ // Inserta un elemento en la lista en base a un puntero
+        void insert(ForwardListNode<T>*, const T&){ // Inserta un elemento en la lista en base a un puntero
 
         }
 
@@ -54,12 +75,12 @@ class ForwardList : public List<T>{
 
         }
 
-        List& sort(void){
+        List<T>& sort(void){
 
         }
 
-        List& reverse(void){
-            
+        List<T>& reverse(void){
+
         }
 
         std::ostream& operator<< (std::ostream& out){
@@ -71,9 +92,9 @@ class ForwardList : public List<T>{
             return out;
         };
 
-        ForwardList& operator<< (List<T>& out, const T& element); // push_back de un elemento
+        //ForwardList& operator<< (List<T>& out, const T& element); // push_back de un elemento
 
-        ForwardList& operator>> (List<T>& out, const T& element) = 0; // pop_back deun elemento
+        //ForwardList& operator>> (List<T>& out, const T& element) = 0; // pop_back deun elemento
 
 };
 

@@ -1,5 +1,6 @@
 #ifndef FORWARDLISTNODE_H
 #define FORWARDLISTNODE_H
+#include "Node.h"
 
 template <typename T>
 class ForwardListNode : public Node<T> {

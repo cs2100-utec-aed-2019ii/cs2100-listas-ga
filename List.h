@@ -23,15 +23,7 @@ class List{
             return head;
         };
 
-        T& back(void){
-            Node<T> node = this->*head;
-            while(node.next){
-                *node = node.next;
-	        }
-	        return node;
-        };
-
-
+        T& back(void) = 0;
 
         virtual void push_back(const T& element) = 0;
 
@@ -41,13 +33,7 @@ class List{
             head = temp;
         };
 
-        Node<T>* pop_back(void){
-            Node<T> node = this->*head;
-            while((node.next).next != nullptr){
-                *node = node.next;
-            }
-            node.next = nullptr;
-        };
+        Node<T>* pop_back(void) = 0;
 
         Node<T>* pop_front(void){
             Node<T>* temp = head;
