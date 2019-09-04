@@ -34,7 +34,33 @@ class ForwardList : public List<T>{
             element.next = nullptr;
         }
 
+        ForwardListNode<T>* pop_back(void){
+            ForwardListNode<T> node = this->*head;
+            while((node.next).next != nullptr){
+                *node = node.next;
+            }
+            node.next = nullptr;
+        }
 
+        void erase(Node<T>*){ // Elimina un elemento de la lista en base a un puntero
+
+        }
+
+        void insert(Node<T>*, const T&){ // Inserta un elemento en la lista en base a un puntero
+
+        }
+
+        void drop(const T&){ // Elimina todos los elementos de la lista que tienen el valor igual al parametro
+
+        }
+
+        List& sort(void){
+
+        }
+
+        List& reverse(void){
+            
+        }
 
         std::ostream& operator<< (std::ostream& out){
             ForwardListNode<T> *temp = head;
@@ -44,6 +70,10 @@ class ForwardList : public List<T>{
             }
             return out;
         };
+
+        ForwardList& operator<< (List<T>& out, const T& element); // push_back de un elemento
+
+        ForwardList& operator>> (List<T>& out, const T& element) = 0; // pop_back deun elemento
 
 };
 
