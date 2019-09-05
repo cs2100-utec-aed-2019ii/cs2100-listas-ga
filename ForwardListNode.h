@@ -1,13 +1,13 @@
 #ifndef FORWARDLISTNODE_H
 #define FORWARDLISTNODE_H
 #include "Node.h"
+#include <memory>
 
 template <typename T>
 class ForwardListNode : public Node<T> {
 
     protected:
-
-        ForwardListNode<T> * next;
+			std::unique_ptr<T> next;
 
     public:
         ForwardListNode(T _value){

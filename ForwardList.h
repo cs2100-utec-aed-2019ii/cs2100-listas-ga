@@ -1,6 +1,7 @@
 #ifndef FORWARDLIST_H
 #define FORWARDLIST_H
 #include <iostream>
+#include <vector>
 #include "ForwardListNode.h"
 #include "List.h"
 
@@ -56,7 +57,9 @@ class ForwardList : public List<T>{
             while((node.next).next != nullptr){
                 *node = node.next;
             }
+						ForwardListNode<T> nodeR = node.next;	
             node.next = nullptr;
+						return nodeR;
         }
 
         void erase(ForwardListNode<T>* del){
@@ -86,7 +89,23 @@ class ForwardList : public List<T>{
             }
         }
 
-        void drop(const T&){ // Elimina todos los elementos de la lista que tienen el valor igual al parametro
+        void drop(const T& val){ // Elimina todos los elementos de la lista que tienen el valor igual al parametro
+          auto node = this->*head;
+          auto* temp = &node;
+					while(node.next != nullptr){
+								if(node.value == val && node != head){
+									temp.next = node.next;
+									~node;
+								}
+									
+								*temp = &node;
+                &node = node.next;
+								if(temp == head){
+									~temp;
+									temp = &node;
+								}								
+          }
+
 
         }
 
@@ -107,7 +126,21 @@ class ForwardList : public List<T>{
 
         }
 
-        List<T>& reverse(void){
+        void reverse(void){
+					ForwardListNode<T> node = this->*head;
+					std::vector<T> pointers;
+					while(node.next != nullptr){
+						pointers.push_back(*node);
+						*node = node.next;
+          } 
+					
+					this->*head = pointers.back();
+					node = this->*head;
+
+					for(auto i=pointers.size()-1; i>=0; i--){
+						node.next = pointers[i];
+						&node = node.next;
+					}
 
         }
 
