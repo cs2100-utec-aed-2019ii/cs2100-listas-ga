@@ -4,12 +4,8 @@
 template <typename T>
 class Node {
 
-    protected:
-
-        T value;
-
     public:
-
+        T value;
         Node(T _value){
             value = _value;
         }

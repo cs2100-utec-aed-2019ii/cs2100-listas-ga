@@ -6,13 +6,10 @@
 template <typename T>
 class ForwardListNode : public Node<T> {
 
-    protected:
-			std::unique_ptr<T> next;
-
     public:
-        ForwardListNode(T _value){
-            this->value = _value;
-        };
+    	ForwardListNode<T>* next;
+
+        ForwardListNode(T _value):Node<T>(_value){};
         
         ~ForwardListNode(void){
         };
