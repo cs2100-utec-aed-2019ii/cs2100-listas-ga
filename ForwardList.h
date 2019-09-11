@@ -43,11 +43,11 @@ inline friend ForwardList<_T>& operator>> (ForwardListNode<_T>& out, ForwardList
         }
 
         T& back(void){
-            ForwardListNode<T> node = this->*head;
-            while(node.next){
-                *node = node.next;
+            ForwardListNode<T>* node = this->head;
+            while(node->next){
+                node = node->next;
 	        }
-	        return node;
+	        return node->value;
         };
 
 
@@ -64,21 +64,22 @@ inline friend ForwardList<_T>& operator>> (ForwardListNode<_T>& out, ForwardList
         };
 
         void push_back(const T& element){
-            ForwardListNode<T> node = this->*head;
-            while(node.next != nullptr){
-                *node = node.next;
+            ForwardListNode<T>* nodeElement = new ForwardListNode<T>(element);
+            ForwardListNode<T>* node = this->head;
+            while(node->next != nullptr){
+                node = node->next;
             }
-            node.next = *element;
-            element.next = nullptr;
+            node->next = nodeElement;
+            nodeElement->next = nullptr;
         }
 
         ForwardListNode<T>* pop_back(void){
-            ForwardListNode<T> node = this->*head;
-            while((node.next).next != nullptr){
-                *node = node.next;
+            ForwardListNode<T>* node = this->head;
+            while((node->next)->next != nullptr){
+                node = node->next;
             }
-						ForwardListNode<T> nodeR = node.next;	
-            node.next = nullptr;
+			ForwardListNode<T>* nodeR = node->next;	
+            node->next = nullptr;
 						return nodeR;
         }
 
@@ -110,12 +111,12 @@ inline friend ForwardList<_T>& operator>> (ForwardListNode<_T>& out, ForwardList
         }
 
         void drop(const T& val){ // Elimina todos los elementos de la lista que tienen el valor igual al parametro
-          auto node = this->*head;
-          auto* temp = &node;
-					while(node.next != nullptr){
-								if(node.value == val && node != head){
-									temp.next = node.next;
-									~node;
+          ForwardListNode<T>* node = this->head;
+          ForwardListNode<T>* temp = node;
+					while(node->next != nullptr){
+								if(node->value == val && node != head){
+									temp->next = node->next;
+									delete node;
 								}
 									
 								*temp = &node;
