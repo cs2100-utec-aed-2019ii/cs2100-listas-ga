@@ -50,6 +50,17 @@ inline friend ForwardList<_T>& operator>> (ForwardListNode<_T>& out, ForwardList
 	        return node->value;
         };
 
+        void push_front(const T& element){
+            ForwardListNode<T> *temp = new ForwardListNode<T>(element);
+            temp->next = head;
+            head = temp;
+        };
+
+        ForwardListNode<T>* pop_front(void){
+            ForwardListNode<T>* temp = head;
+            head = head->next;
+            return temp;
+        };
 
 
         unsigned int size(void){

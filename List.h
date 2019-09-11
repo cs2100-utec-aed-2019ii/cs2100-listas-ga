@@ -23,23 +23,15 @@ class List{
             return head;
         };
 
-        virtual T& back(void) = 0;
+        virtual T& back(void);
 
-        virtual void push_back(const T& element) = 0;
+        virtual void push_back(const T& element);
 
-        void push_front(const T& element){
-            Node<T> *temp = new Node<T>(*element);
-            temp->next = head;
-            head = temp;
-        };
+        virtual void push_front(const T& element);
 
-        virtual Node<T>* pop_back(void) = 0;
+        virtual Node<T>* pop_back(void);
 
-        Node<T>* pop_front(void){
-            Node<T>* temp = head;
-            head = head->next;
-            return temp;
-        };
+        virtual Node<T>* pop_front(void);
 
         T& operator[] (const int& index){
             Node<T> *temp = head;
