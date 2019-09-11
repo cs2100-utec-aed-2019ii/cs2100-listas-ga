@@ -8,6 +8,26 @@
 template <typename T>
 class ForwardList : public List<T>{
 
+template<typename _T>
+inline friend std::ostream& operator<< (std::ostream& out, ForwardList<_T>& list){
+    ForwardListNode<_T> *temp = list.head;
+            while(temp){
+                out<< temp->value;
+                temp = temp->next;
+            }
+    return out;
+}
+
+template<typename _T>
+inline friend ForwardList<_T>& operator<< (const _T& element, ForwardList<_T>& list){
+    list->push_back(element);
+}
+
+template<typename _T>
+inline friend ForwardList<_T>& operator>> (ForwardListNode<_T>& out, ForwardList<_T>& list){
+    out = list->pop_back();
+}
+
     protected:
 
         ForwardListNode<T> *head;
@@ -143,19 +163,6 @@ class ForwardList : public List<T>{
 					}
 
         }
-
-        std::ostream& operator<< (std::ostream& out){
-            ForwardListNode<T> *temp = head;
-            while(temp){
-                out<< temp->value;
-                temp = temp->next;
-            }
-            return out;
-        };
-
-        //ForwardList& operator<< (List<T>& out, const T& element); // push_back de un elemento
-
-        //ForwardList& operator>> (List<T>& out, const T& element) = 0; // pop_back deun elemento
 
 };
 
