@@ -147,10 +147,10 @@ class ForwardList : public List<T>{
 
 	void reverse(void){
 		auto node = this->head;
-		std::vector<T*> pointers;
-		while(node.next != nullptr){
+		std::vector<ForwardListNode<T>*> pointers;
+		while(node->next != nullptr){
 			pointers.push_back(node);
-			node = node.next;
+			node = node->next;
 		} 
 
 		this->head = pointers.back();
