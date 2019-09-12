@@ -23,15 +23,15 @@ class List{
             return head;
         };
 
-        virtual T& back(void);
+        virtual T& back(void){};
 
-        virtual void push_back(const T& element);
+        virtual void push_back(const T& element){};
 
-        virtual void push_front(const T& element);
+        virtual void push_front(const T& element){};
 
-        virtual Node<T>* pop_back(void);
+        virtual Node<T>* pop_back(void){};
 
-        virtual Node<T>* pop_front(void);
+        virtual Node<T>* pop_front(void){};
 
         T& operator[] (const int& index){
             Node<T> *temp = head;
@@ -47,19 +47,19 @@ class List{
             return head;
         };
 
-        virtual unsigned int size(void) = 0;
+        virtual unsigned int size(void){};
 
-        void clear(void);
+        void clear(void){};
 
-        virtual void erase(Node<T>* n); // Elimina un elemento de la lista en base a un puntero
+        virtual void erase(Node<T>* n){}; // Elimina un elemento de la lista en base a un puntero
 
-        virtual void insert(Node<T>*, const T&); // Inserta un elemento en la lista en base a un puntero
+        virtual void insert(Node<T>*, const T&){}; // Inserta un elemento en la lista en base a un puntero
 
-        virtual void drop(const T&); // Elimina todos los elementos de la lista que tienen el valor igual al parametro
+        virtual void drop(const T&){}; // Elimina todos los elementos de la lista que tienen el valor igual al parametro
 
-        virtual void sort(void);
+        virtual void sort(void){};
 
-        virtual void reverse(void);
+        virtual void reverse(void){};
 
         //std::ostream& operator<< (std::ostream& out, const List<T>& list);
 

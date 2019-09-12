@@ -32,7 +32,10 @@ class ForwardList : public List<T>{
 	ForwardListNode<T>* tail;
 
 	public:
-	ForwardList():head{nullptr},tail{nullptr}{};
+	ForwardList():List<T>(){
+        head = nullptr;
+        tail = nullptr;
+    };
 
 	~ForwardList(){
 		this->clear();
@@ -157,7 +160,7 @@ class ForwardList : public List<T>{
 		node = this->head;
 
 		for(auto i=pointers.size()-1; i>=0; i--){
-			node.next = pointers[i];
+			node->next = pointers[i];
 			node = node->next;
 		}
 
