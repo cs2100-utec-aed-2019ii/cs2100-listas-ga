@@ -49,14 +49,7 @@ class List{
 
         virtual unsigned int size(void) = 0;
 
-        void clear(void){
-            Node<T>* temp = head;
-            while(temp){
-                temp = temp->next;
-                delete head;
-                head = temp;
-            }
-        };
+        void clear(void);
 
         virtual void erase(Node<T>* n); // Elimina un elemento de la lista en base a un puntero
 

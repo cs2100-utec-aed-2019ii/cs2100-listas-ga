@@ -94,6 +94,15 @@ inline friend ForwardList<_T>& operator>> (ForwardListNode<_T>& out, ForwardList
 						return nodeR;
         }
 
+        void clear(void){
+            ForwardListNode<T>* temp = head;
+            while(temp){
+                temp = temp->next;
+                delete head;
+                head = temp;
+            }
+        };
+
         void erase(ForwardListNode<T>* del){
             ForwardListNode<T>* temp = head;
             while(temp->next != del){
