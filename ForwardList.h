@@ -163,7 +163,14 @@ class ForwardList : public List<T>{
 
 	}
 
+	void clear(void){
+		ForwardListNode<T>* temp = head;
+		while(temp){
+			temp = temp->next;
+			delete head;
+			head = temp;
+		}
+	}
 };
-
 
 #endif
