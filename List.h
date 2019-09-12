@@ -12,7 +12,7 @@ class List{
     public:
 
         List(void){
-
+            head = nullptr;
         }
 
         ~List(void){
@@ -25,7 +25,9 @@ class List{
 
         virtual T& back(void){};
 
-        virtual void push_back(const T& element){};
+        virtual void push_back(const T& element){
+
+        };
 
         virtual void push_front(const T& element){};
 

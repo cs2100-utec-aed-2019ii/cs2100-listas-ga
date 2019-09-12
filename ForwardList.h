@@ -10,9 +10,11 @@ class ForwardList : public List<T>{
 
 	template<typename _T>
 		inline friend std::ostream& operator<< (std::ostream& out, ForwardList<_T>& list){
-			ForwardListNode<_T> *temp = list.head;
+			ForwardListNode<_T>* temp = list.head;
 			while(temp){
+                
 				out<< temp->value;
+                
 				temp = temp->next;
 			}
 			return out;
@@ -56,9 +58,13 @@ class ForwardList : public List<T>{
 	}
 
 	Node<T>* pop_front(void){
-		auto temp = head;
-		head = head->next;
-		return temp;
+        auto temp = head;
+        if(!head){
+            head = head->next;
+        }
+        return temp;
+
+		
 	}
 
 
@@ -74,13 +80,18 @@ class ForwardList : public List<T>{
 	};
 
 	void push_back(const T& element){
-		auto nodeElement = new ForwardListNode<T>(element);
-		auto node = this->head;
-		while(node->next != nullptr){
-			node = node->next;
-		}
-		node->next = nodeElement;
-		nodeElement->next = nullptr;
+		ForwardListNode<T>* nodeElement = new ForwardListNode<T>(element);
+		ForwardListNode<T>* node = this->head;
+        if(!head){
+            head = nodeElement;
+            tail = nodeElement;
+        }else{
+            while(node->next){
+                node = node->next;
+            }
+            node->next = nodeElement;
+            tail = nodeElement;
+        }
 	}
 
 	Node<T>* pop_back(void){

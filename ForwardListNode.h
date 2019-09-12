@@ -9,7 +9,10 @@ class ForwardListNode : public Node<T> {
     public:
     	ForwardListNode<T>* next;
 
-        ForwardListNode(T _value):Node<T>(_value){};
+        ForwardListNode(T _value):Node<T>(_value){
+            Node<T>::value = _value;
+            next = nullptr;
+        };
         
         ~ForwardListNode(void){
         };
