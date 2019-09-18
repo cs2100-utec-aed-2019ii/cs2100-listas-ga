@@ -8,6 +8,27 @@
 template <typename T>
 class ForwardList : public List<T>{
 
+  typedef ForwardListNode<T> node_t;
+
+  friend class ForwardIterator;
+  class ForwardIterator: public Iterator<node_t>{
+    typedef typename Iterator<node_t>::node_t node_t;
+    typedef typename Iterator<node_t>::value_t value_t;
+
+    ForwardIterator(node_t* pointer = nullptr):Iterator<node_t>(pointer){}
+    ~ForwardIterator(){
+
+    }
+
+    ForwardIterator& operator++ (void){
+        Iterator<node_t>::pointer = Iterator<node_t>::pointer->next; 
+        return *this;
+    }
+
+
+    
+  }
+
 	template<typename _T>
 		inline friend std::ostream& operator<< (std::ostream& out, ForwardList<_T>& list){
 			ForwardListNode<_T>* temp = list.head;
