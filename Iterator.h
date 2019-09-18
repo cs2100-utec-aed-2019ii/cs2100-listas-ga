@@ -31,7 +31,7 @@ class Iterator
 		return pointer == it.pointer;
 	}
 
-	virtual Iterator& operator++(int) const = 0;
+	virtual Iterator& operator++(int);
 /*
 	virtual Iterator& operator++(void) const = 0;
 	virtual Iterator& operator--(void) const = 0;

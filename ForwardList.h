@@ -9,6 +9,8 @@
 template <typename T>
 class ForwardList : public List<T>{
 
+public:
+
   typedef ForwardListNode<T> _node_t;
 
   friend class ForwardIterator;
@@ -71,6 +73,18 @@ class ForwardList : public List<T>{
 		this->clear();
 	}
 
+	ForwardIterator begin(){
+		return ForwardIterator(head);
+	}
+
+	ForwardIterator end(){
+		return ForwardIterator(tail);
+	}
+
+	T& front(void){
+		return head->value;
+	}
+
 	T& back(void){
 		auto node = this->head;
 		while(node->next != nullptr){
@@ -130,11 +144,18 @@ class ForwardList : public List<T>{
 		}
 		temp = node->next;
 		node->next = nullptr;
+		tail = node;
 		return(temp);
 	}
 
 	void erase(ForwardListNode<T>* del){
 		auto temp = head;
+		if(del == head){
+			pop_front();
+		}
+		else if(del == tail){
+			pop_back();
+		}
 		while(temp->next != del){
 			temp = temp->next;
 		}
@@ -147,6 +168,10 @@ class ForwardList : public List<T>{
 		if(_node == head){
 			newNode->next = _node;
 			head = newNode;
+		}
+		else if(_node == tail){
+			tail->next = _node;
+			_node = tail;
 		}
 		else{
 			while(temp->next != _node){
@@ -161,9 +186,15 @@ class ForwardList : public List<T>{
 	}
 
 	void drop(const T& val){ // Elimina todos los elementos de la lista que tienen el valor igual al parametro
-		auto node = this->head;
-		auto temp = node->next;
+		if(head->value == val){pop_front();}
+		if(tail->value == val){pop_back();}
+		
+		ForwardListNode<T>* node = this->head;
+		ForwardListNode<T>* temp = node->next;
 		while(node->next != nullptr){
+			if(node->value == val){
+
+			}
 			delete node;
 			node = temp;
 			temp = temp->next;
