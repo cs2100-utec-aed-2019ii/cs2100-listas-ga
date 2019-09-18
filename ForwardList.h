@@ -193,11 +193,11 @@ public:
 		ForwardListNode<T>* temp = node->next;
 		while(node->next != nullptr){
 			if(node->value == val){
-
-			}
 			delete node;
 			node = temp;
 			temp = temp->next;
+			}
+
 		}
 	}
 
