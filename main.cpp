@@ -12,6 +12,8 @@ int main(){
     cout<<*fList<<endl;
     fList->pop_back();
     fList->pop_front();
-    cout<<*fList;
+    cout<<*fList<<endl;
+    fList->clear();
+    cout<<*fList<<endl;
 
 }

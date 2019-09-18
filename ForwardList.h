@@ -1,5 +1,6 @@
 #ifndef FORWARDLIST_H
 #define FORWARDLIST_H
+#include "Iterator.h"
 #include <iostream>
 #include <vector>
 #include "ForwardListNode.h"
@@ -8,26 +9,32 @@
 template <typename T>
 class ForwardList : public List<T>{
 
-  typedef ForwardListNode<T> node_t;
+  typedef ForwardListNode<T> _node_t;
 
   friend class ForwardIterator;
-  class ForwardIterator: public Iterator<node_t>{
-    typedef typename Iterator<node_t>::node_t node_t;
-    typedef typename Iterator<node_t>::value_t value_t;
+  class ForwardIterator: public Iterator<_node_t> {
 
-    ForwardIterator(node_t* pointer = nullptr):Iterator<node_t>(pointer){}
+    typedef typename Iterator<_node_t>::node_t node_t;
+    typedef typename Iterator<_node_t>::value_t value_t;
+
+    ForwardIterator(_node_t* pointer = nullptr):Iterator<_node_t>(pointer){}
     ~ForwardIterator(){
 
     }
 
     ForwardIterator& operator++ (void){
-        Iterator<node_t>::pointer = Iterator<node_t>::pointer->next; 
+        Iterator<_node_t>::pointer = Iterator<_node_t>::pointer->next; 
         return *this;
     }
 
+	ForwardIterator& operator++(int){
+		auto itr = *this;
+		++*this;
+		return itr;
+	}
 
     
-  }
+  };
 
 	template<typename _T>
 		inline friend std::ostream& operator<< (std::ostream& out, ForwardList<_T>& list){
@@ -80,7 +87,7 @@ class ForwardList : public List<T>{
 
 	Node<T>* pop_front(void){
         auto temp = head;
-        if(!head){
+        if(head){
             head = head->next;
         }
         return temp;

@@ -7,6 +7,7 @@ template <typename T>
 class ForwardListNode : public Node<T> {
 
     public:
+        typedef typename Node<T>::value_t value_t;
     	ForwardListNode<T>* next;
 
         ForwardListNode(T _value):Node<T>(_value){

@@ -19,7 +19,7 @@ class Iterator
 	~Iterator(void){
 	}
 
-	virtual bool operator!= (Iterator it){
+	virtual bool operator!= (Iterator& it){
 		return pointer != it.pointer;
 	}
 
@@ -27,19 +27,26 @@ class Iterator
 		return **pointer;
 	}
 
-	virtual Iterator& operator++(void) const = 0;
+	virtual bool operator == (const Iterator& it){
+		return pointer == it.pointer;
+	}
+
 	virtual Iterator& operator++(int) const = 0;
+/*
+	virtual Iterator& operator++(void) const = 0;
 	virtual Iterator& operator--(void) const = 0;
 	virtual Iterator& operator--(int) const = 0;
 	
-	virtual bool operator == (const Iterator&) const = 0;
 	virtual bool operator != (const Iterator&) const = 0;
 	virtual bool operator <= (const Iterator&) const = 0;
 	virtual bool operator >= (const Iterator&) const = 0;
 	virtual bool operator < (const Iterator&) const = 0;
 	virtual bool operator > (const Iterator&) const = 0;
 	
-	virtual void operator=(const V&) = 0;
-
+	virtual void operator=(const Iterator&) = 0;
+*/
 
 };
+
+#endif
+
