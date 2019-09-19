@@ -220,8 +220,8 @@ class ForwardList : public List<T>{
 
 		void reverse() {
 			auto node = head;
-			Node<T>* prev = nullptr;
-			Node<T>* next = nullptr;
+			ForwardListNode<T>* prev = nullptr;
+			ForwardListNode<T>* next = nullptr;
 
 			while (node != nullptr) {
 				next = node->next;
