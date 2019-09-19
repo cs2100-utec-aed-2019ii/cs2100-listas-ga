@@ -243,6 +243,7 @@ public:
 			delete head;
 			head = temp;
 		}
+		tail = nullptr;
 	}
 };
 
