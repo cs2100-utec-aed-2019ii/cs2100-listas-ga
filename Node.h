@@ -4,16 +4,11 @@
 template <typename T>
 class Node {
 
-    protected:
-
-        T value;
-
-        Node<T> * next;
-
     public:
-
+        typedef T value_t;
+        T value;
         Node(T _value){
-
+            value = _value;
         }
 
         ~Node(void){
